@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ClienteCadastroActivity"
+    android:orientation="vertical"
+    >
+
+    <!-- Campo para o Código do Cliente -->
+    <EditText
+        android:id="@+id/edCodigoCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código do Cliente"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo para o Nome do Cliente -->
+    <EditText
+        android:id="@+id/edNomeCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Cliente"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo para o CPF do Cliente -->
+    <EditText
+        android:id="@+id/edCPFCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CPF do Cliente"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo para a Data de Nascimento do Cliente -->
+    <EditText
+        android:id="@+id/edDataNascCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data de Nascimento"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo para o Código de Endereço do Cliente -->
+    <EditText
+        android:id="@+id/edCodigoEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código de Endereço"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botão para Salvar o Cliente -->
+    <Button
+        android:id="@+id/btnSalvarCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar Cliente"
+        android:layout_gravity="center" />
+
+</LinearLayout>
