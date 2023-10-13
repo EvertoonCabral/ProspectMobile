@@ -27,13 +27,15 @@ public class SQLiteDataHelper extends SQLiteOpenHelper {
                 "DataNasc TEXT," +
                 "CodigoEndereco INTEGER)";
 
+        //createEnderecoTable
+
         String createEnderecoTable = "CREATE TABLE ENDERECO (" +
-                "Codigo INTEGER PRIMARY KEY," +
-                "Logradouro TEXT," +
-                "Numero INTEGER," +
-                "Bairro TEXT," +
-                "Cidade TEXT," +
-                "UF TEXT)";
+                "Codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "Logradouro TEXT NOT NULL," +
+                "Numero TEXT NOT NULL," +
+                "Bairro TEXT NOT NULL," +
+                "Cidade TEXT NOT NULL," +
+                "UF TEXT NOT NULL)";
 
         String createItemTable = "CREATE TABLE ITEM (" +
                 "Codigo INTEGER PRIMARY KEY," +

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.EnderecoCadastroActivity"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/edCodigoEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edLogradouro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Logradouro" />
+
+    <EditText
+        android:id="@+id/edNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Número"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edBairro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bairro" />
+
+    <EditText
+        android:id="@+id/edCidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cidade" />
+
+    <EditText
+        android:id="@+id/edUF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="UF" />
+
+    <Button
+        android:id="@+id/btnSalvarEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar Endereço"
+        android:layout_marginTop="16dp" />
+
+
+</LinearLayout>

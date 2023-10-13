@@ -96,7 +96,9 @@ public class ClienteDao implements GenericDao<Cliente>{
     public ArrayList<Cliente> getAll() {
         ArrayList<Cliente> lista = new ArrayList<>();
         try {
-            Cursor cursor = bd.query(tableName, colunas, null, null, null, null, "Codigo");
+            Cursor cursor = bd.query(tableName, colunas, null, null,
+
+                    null, null, "Codigo");
             if (cursor.moveToFirst()) {
                 do {
                     Cliente cliente = new Cliente();
@@ -118,7 +120,10 @@ public class ClienteDao implements GenericDao<Cliente>{
     public Cliente getById(int id) {
         try {
             String[] identificador = {String.valueOf(id)};
-            Cursor cursor = bd.query(tableName, colunas, "Codigo = ?", identificador, null, null, null);
+            Cursor cursor = bd.query(tableName, colunas, "Codigo = ?", identificador,
+                    null, null, null);
+
+
             if (cursor.moveToFirst()) {
                 Cliente cliente = new Cliente();
                 cliente.setCodigo(cursor.getInt(0));
