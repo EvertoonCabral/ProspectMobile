@@ -12,7 +12,7 @@
         android:theme="@style/Theme.ProspectMobileTrabalhoAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".EnderecoCadastroActivity"
+            android:name=".view.EnderecoCadastroActivity"
             android:exported="false" />
         <activity
             android:name=".view.ClienteCadastroActivity"

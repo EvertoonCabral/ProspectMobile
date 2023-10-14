@@ -3,6 +3,11 @@ plugins {
 }
 
 android {
+
+    viewBinding {
+        enabled = true
+    }
+
     namespace 'com.everton.prospectmobile_trabalhoandroid'
     compileSdk 33
 

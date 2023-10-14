@@ -8,13 +8,7 @@
     android:orientation="vertical"
     >
 
-    <!-- Campo para o Código do Cliente -->
-    <EditText
-        android:id="@+id/edCodigoCliente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Código do Cliente"
-        android:layout_marginBottom="16dp" />
+
 
     <!-- Campo para o Nome do Cliente -->
     <EditText
@@ -41,11 +35,10 @@
         android:layout_marginBottom="16dp" />
 
     <!-- Campo para o Código de Endereço do Cliente -->
-    <EditText
-        android:id="@+id/edCodigoEndereco"
+    <Spinner
+        android:id="@+id/spinnerEndereco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Código de Endereço"
         android:layout_marginBottom="16dp" />
 
     <!-- Botão para Salvar o Cliente -->

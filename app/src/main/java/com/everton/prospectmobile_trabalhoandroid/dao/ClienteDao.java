@@ -9,11 +9,11 @@ import android.util.Log;
 
 import com.everton.prospectmobile_trabalhoandroid.helper.SQLiteDataHelper;
 import com.everton.prospectmobile_trabalhoandroid.model.Cliente;
+import com.everton.prospectmobile_trabalhoandroid.model.Endereco;
 
 import java.util.ArrayList;
 
-public class ClienteDao implements GenericDao<Cliente>{
-
+public class ClienteDao {
 
     private SQLiteDataHelper sqLiteDataHelper;
     private SQLiteDatabase bd;
@@ -29,112 +29,78 @@ public class ClienteDao implements GenericDao<Cliente>{
             return instancia;
     }
 
-
     private ClienteDao(Context context) {
         this.context = context;
         sqLiteDataHelper = new SQLiteDataHelper(this.context, "UNIPAR",null,1);
         bd = sqLiteDataHelper.getWritableDatabase();
     }
 
+    public long insert(Cliente cliente) {
+        ContentValues valores = new ContentValues();
+        valores.put("Nome", cliente.getNome());
+        valores.put("CPF", cliente.getCpf());
+        valores.put("DataNasc", cliente.getDataNasc());
+        valores.put("CodigoEndereco", cliente.getEndereco().getCodigo()); // Aqui você pega o código do endereço associado ao cliente
 
-
-    @Override
-    public long insert(Cliente obj) {
-        try {
-            ContentValues valores = new ContentValues();
-            valores.put("Nome", obj.getNome());
-            valores.put("CPF", obj.getCpf());
-            valores.put("DataNasc", obj.getDataNasc());
-            valores.put("CodigoEndereco", obj.getCodEndereco());
-
-
-            //método para inserir na tabela (<nome da tabela>, <coluna especifica que queira inserir>, <dados>);
-            //retorna a linha que foi inserida na tabela
-            return bd.insert(tableName, null, valores);
-
-        } catch (SQLException ex) {
-            Log.e("ERRO", "ClienteDao.insert(): " + ex.getMessage());
-        }
-        return -1;
+        return bd.insert(tableName, null, valores);
     }
 
-    @Override
-    public long update(Cliente obj) {
+    public long update(Cliente cliente) {
+        ContentValues valores = new ContentValues();
+        valores.put("Nome", cliente.getNome());
+        valores.put("CPF", cliente.getCpf());
+        valores.put("DataNasc", cliente.getDataNasc());
+        valores.put("CodigoEndereco", cliente.getEndereco().getCodigo()); // Aqui você pega o código do endereço associado ao cliente
 
-        try{
-            ContentValues valores = new ContentValues();
-            valores.put("Nome", obj.getNome());
-            valores.put("CPF", obj.getCpf());
-            valores.put("DataNasc", obj.getDataNasc());
-            valores.put("CodigoEndereco", obj.getCodEndereco());
-            String[] identificador = {String.valueOf(obj.getCodigo())};
-
-            return bd.update(tableName, valores, "Codigo = ?",identificador);
-
-        }catch (SQLException ex){
-
-            Log.e("ERRO", "ClienteDao.update(): " + ex.getMessage());
-        }
-        return -1;
-
+        String[] identificador = {String.valueOf(cliente.getCodigo())};
+        return bd.update(tableName, valores, "Codigo = ?", identificador);
     }
 
-    @Override
-    public long delete(Cliente obj) {
-
-        try{
-            String[] identificador = {String.valueOf(obj.getCodigo())};
-            return bd.delete(tableName, "Codigo=?", identificador);
-
-        }catch (SQLException e){
-            Log.e("ERRO", "ClienteDao.delete(): " + e.getMessage());
-        }
-
-        return -1;
+    public long delete(Cliente cliente) {
+        String[] identificador = {String.valueOf(cliente.getCodigo())};
+        return bd.delete(tableName, "Codigo=?", identificador);
     }
-    @Override
+
     public ArrayList<Cliente> getAll() {
         ArrayList<Cliente> lista = new ArrayList<>();
-        try {
-            Cursor cursor = bd.query(tableName, colunas, null, null,
-
-                    null, null, "Codigo");
-            if (cursor.moveToFirst()) {
-                do {
-                    Cliente cliente = new Cliente();
-                    cliente.setCodigo(cursor.getInt(0));
-                    cliente.setNome(cursor.getString(1));
-                    cliente.setCpf(cursor.getString(2));
-                    cliente.setDataNasc(cursor.getString(3));
-                    cliente.setCodEndereco(cursor.getInt(4));
-                    lista.add(cliente);
-                } while (cursor.moveToNext());
-            }
-        } catch (SQLException e) {
-            Log.e("ERRO", "ClienteDao.getAll(): " + e.getMessage());
-        }
-        return lista;
-    }
-
-    @Override
-    public Cliente getById(int id) {
-        try {
-            String[] identificador = {String.valueOf(id)};
-            Cursor cursor = bd.query(tableName, colunas, "Codigo = ?", identificador,
-                    null, null, null);
-
-
-            if (cursor.moveToFirst()) {
+        Cursor cursor = bd.query(tableName, colunas, null, null, null, null, "Codigo");
+        if (cursor.moveToFirst()) {
+            do {
                 Cliente cliente = new Cliente();
                 cliente.setCodigo(cursor.getInt(0));
                 cliente.setNome(cursor.getString(1));
                 cliente.setCpf(cursor.getString(2));
                 cliente.setDataNasc(cursor.getString(3));
-                cliente.setCodEndereco(cursor.getInt(4));
-                return cliente;
-            }
-        } catch (SQLException e) {
-            Log.e("ERRO", "ClienteDao.getById(): " + e.getMessage());
+
+                // Aqui, você pode buscar o endereço associado ao cliente usando o CodigoEndereco
+                int enderecoCodigo = cursor.getInt(4);
+                EnderecoDao enderecoDao = new EnderecoDao(context);
+                Endereco endereco = enderecoDao.getById(enderecoCodigo);
+                cliente.setEndereco(endereco);
+
+                lista.add(cliente);
+            } while (cursor.moveToNext());
+        }
+        return lista;
+    }
+
+    public Cliente getById(int id) {
+        String[] identificador = {String.valueOf(id)};
+        Cursor cursor = bd.query(tableName, colunas, "Codigo = ?", identificador, null, null, null);
+        if (cursor.moveToFirst()) {
+            Cliente cliente = new Cliente();
+            cliente.setCodigo(cursor.getInt(0));
+            cliente.setNome(cursor.getString(1));
+            cliente.setCpf(cursor.getString(2));
+            cliente.setDataNasc(cursor.getString(3));
+
+            // Aqui, você pode buscar o endereço associado ao cliente usando o CodigoEndereco
+            int enderecoCodigo = cursor.getInt(4);
+            EnderecoDao enderecoDao = new EnderecoDao(context);
+            Endereco endereco = enderecoDao.getById(enderecoCodigo);
+            cliente.setEndereco(endereco);
+
+            return cliente;
         }
         return null;
     }

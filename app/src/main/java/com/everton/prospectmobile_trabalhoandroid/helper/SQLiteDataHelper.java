@@ -21,45 +21,43 @@ public class SQLiteDataHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         String createClienteTable = "CREATE TABLE CLIENTE (" +
-                "Codigo INTEGER PRIMARY KEY," +
+                "Codigo INTEGER PRIMARY KEY AUTOINCREMENT," + // Adicionado AUTOINCREMENT
                 "Nome TEXT," +
                 "CPF TEXT," +
                 "DataNasc TEXT," +
-                "CodigoEndereco INTEGER)";
-
-        //createEnderecoTable
+                "CodigoEndereco INTEGER," +
+                "FOREIGN KEY (CodigoEndereco) REFERENCES ENDERECO (Codigo))"; // Adicionada chave estrangeira para Endereco
 
         String createEnderecoTable = "CREATE TABLE ENDERECO (" +
-                "Codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Logradouro TEXT NOT NULL," +
-                "Numero TEXT NOT NULL," +
-                "Bairro TEXT NOT NULL," +
-                "Cidade TEXT NOT NULL," +
-                "UF TEXT NOT NULL)";
+                "Codigo INTEGER PRIMARY KEY AUTOINCREMENT," + // Adicionado AUTOINCREMENT
+                "Logradouro TEXT," +
+                "Numero TEXT," + // Alterado para TEXT para permitir números de endereço como "12A", "3B", etc.
+                "Bairro TEXT," +
+                "Cidade TEXT," +
+                "UF TEXT)";
 
         String createItemTable = "CREATE TABLE ITEM (" +
-                "Codigo INTEGER PRIMARY KEY," +
+                "Codigo INTEGER PRIMARY KEY AUTOINCREMENT," + // Adicionado AUTOINCREMENT
                 "Descricao TEXT," +
                 "ValorUnit REAL," +
                 "UnidadeMedia TEXT)";
 
         String createPedidoVendaTable = "CREATE TABLE PEDIDOVENDA (" +
-                "Codigo INTEGER PRIMARY KEY," +
+                "Codigo INTEGER PRIMARY KEY AUTOINCREMENT," + // Adicionado AUTOINCREMENT
                 "Data TEXT," +
                 "ValorTotal REAL," +
                 "CondicaoPagamento TEXT," +
                 "NumParcelas INTEGER," +
                 "ValorFrete REAL," +
                 "CodigoCliente INTEGER," +
-                "FOREIGN KEY (CodigoCliente) REFERENCES CLIENTE (Codigo))";
+                "FOREIGN KEY (CodigoCliente) REFERENCES CLIENTE (Codigo))"; // Adicionada chave estrangeira para Cliente
 
         sqLiteDatabase.execSQL(createClienteTable);
         sqLiteDatabase.execSQL(createEnderecoTable);
         sqLiteDatabase.execSQL(createItemTable);
         sqLiteDatabase.execSQL(createPedidoVendaTable);
-
-
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

@@ -6,15 +6,14 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String dataNasc;
-    private int CodEndereco;
+    private Endereco endereco; // Atributo ajustado
 
-
-    public Cliente(int codigo, String nome, String cpf, String dataNasc, int codEndereco) {
+    public Cliente(int codigo, String nome, String cpf, String dataNasc, Endereco endereco) {
         this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
-        CodEndereco = codEndereco;
+        this.endereco = endereco; // Ajustado aqui
     }
 
     public Cliente() {
@@ -52,11 +51,11 @@ public class Cliente {
         this.dataNasc = dataNasc;
     }
 
-    public int getCodEndereco() {
-        return CodEndereco;
+    public Endereco getEndereco() { // Método get ajustado
+        return endereco;
     }
 
-    public void setCodEndereco(int codEndereco) {
-        CodEndereco = codEndereco;
+    public void setEndereco(Endereco endereco) { // Método set ajustado
+        this.endereco = endereco;
     }
 }

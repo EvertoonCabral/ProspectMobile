@@ -29,7 +29,7 @@ public class EnderecoDao implements GenericDao<Endereco>{
             return instancia;
     }
 
-    private EnderecoDao(Context context) {
+    public EnderecoDao(Context context) {
         this.context = context;
         sqLiteDataHelper = new SQLiteDataHelper(this.context,"UNIPAR",null,1);
         bd = sqLiteDataHelper.getWritableDatabase();
@@ -51,6 +51,7 @@ public class EnderecoDao implements GenericDao<Endereco>{
             return -1;
         }
     }
+
 
     public long update(Endereco endereco) {
         try {

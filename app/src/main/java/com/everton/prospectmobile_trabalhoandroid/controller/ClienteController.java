@@ -4,7 +4,9 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.everton.prospectmobile_trabalhoandroid.dao.ClienteDao;
+import com.everton.prospectmobile_trabalhoandroid.dao.EnderecoDao;
 import com.everton.prospectmobile_trabalhoandroid.model.Cliente;
+import com.everton.prospectmobile_trabalhoandroid.model.Endereco;
 
 import java.util.ArrayList;
 
@@ -20,21 +22,22 @@ public ClienteController(Context context){
 }
 
 
-public long SalvarCliente(String codigo, String nome, String cpf, String dataNasc, String codEndereco){
-/*
+    public long salvarCliente(String nome, String cpf, String dataNasc, Endereco endereco) {
+        // Primeiro, salvamos o endereço
+        EnderecoDao enderecoDao = EnderecoDao.getInstancia(context);
+        long enderecoId = enderecoDao.insert(endereco);
 
-    String validacao = validarCliente(codigo, nome, cpf, dataNasc, codEndereco);
-    if (!validacao.isEmpty()) {
-        // Se houver erros de validação, retorna um número negativo.
-        return -1;
+        // Se o endereço foi salvo com sucesso, salvamos o cliente
+        if (enderecoId > 0) {
+            Cliente cliente = new Cliente(0, nome, cpf, dataNasc, endereco); // 0 é um placeholder para o código do cliente, pois será gerado automaticamente pelo banco de dados.
+            return ClienteDao.getInstancia(context).insert(cliente);
+        } else {
+            return -1;
+        }
     }
-*/
-    Cliente cliente = new Cliente(Integer.parseInt(codigo), nome, cpf, dataNasc, Integer.parseInt(codEndereco));
-    return ClienteDao.getInstancia(context).insert(cliente);
-}
 
-    public long atualizarCliente(String codigo, String nome, String cpf, String dataNasc, String codEndereco) {
-        Cliente cliente = new Cliente(Integer.parseInt(codigo), nome, cpf, dataNasc, Integer.parseInt(codEndereco));
+    public long atualizarCliente(String codigo, String nome, String cpf, String dataNasc, Endereco codEndereco) {
+        Cliente cliente = new Cliente(Integer.parseInt(codigo), nome, cpf, dataNasc, codEndereco);
 
         return ClienteDao.getInstancia(context).update(cliente);
     }
@@ -53,12 +56,8 @@ public long SalvarCliente(String codigo, String nome, String cpf, String dataNas
         return ClienteDao.getInstancia(context).getById(codigo);
     }
 
-    public String validarCliente(String codigo, String nome, String cpf, String dataNasc, String codEndereco) {
+    public String validarCliente(String nome, String cpf, String dataNasc, Endereco endereco) {
         StringBuilder validacao = new StringBuilder();
-
-        if (TextUtils.isEmpty(codigo)) {
-            validacao.append("Código do cliente deve ser preenchido!!\n");
-        }
 
         if (TextUtils.isEmpty(nome)) {
             validacao.append("Nome do cliente deve ser preenchido!!\n");
@@ -72,8 +71,8 @@ public long SalvarCliente(String codigo, String nome, String cpf, String dataNas
             validacao.append("Data de Nascimento do cliente deve ser preenchida!!\n");
         }
 
-        if (TextUtils.isEmpty(codEndereco)) {
-            validacao.append("Código de Endereço do cliente deve ser preenchido!!\n");
+        if (endereco == null || TextUtils.isEmpty(endereco.getLogradouro()) || TextUtils.isEmpty(endereco.getNumero()) || TextUtils.isEmpty(endereco.getBairro()) || TextUtils.isEmpty(endereco.getCidade()) || TextUtils.isEmpty(endereco.getUf())) {
+            validacao.append("Todos os campos do endereço devem ser preenchidos!!\n");
         }
 
         // Aqui você pode adicionar outras validações específicas para cada campo, como formato do CPF, etc.

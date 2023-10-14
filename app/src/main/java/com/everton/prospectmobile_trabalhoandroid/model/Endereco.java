@@ -18,6 +18,14 @@ public class Endereco {
         this.uf = uf;
     }
 
+    public Endereco(String logradouro, String numero, String bairro, String cidade, String uf) {
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+    }
+
     public Endereco() {
     }
 
