@@ -8,40 +8,41 @@
     tools:context=".view.ItemCadastroActivity">
 
     <LinearLayout
+        android:layout_marginTop="100sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:spacing="10dp">
 
-        <!-- Descrição do Item -->
         <EditText
             android:id="@+id/edDescricaoItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:layout_gravity="center"
             android:hint="Descrição"
             android:inputType="text" />
 
-        <!-- Valor Unitário -->
         <EditText
             android:id="@+id/edValorUnitario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:layout_gravity="center"
             android:hint="Valor Unitário"
             android:inputType="numberDecimal" />
 
-        <!-- Unidade de Medida -->
         <EditText
             android:id="@+id/edUnidadeMedida"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:layout_gravity="center"
             android:hint="Unidade de Medida"
             android:inputType="text" />
 
-        <!-- Botão Salvar -->
         <Button
             android:id="@+id/btnSalvarItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:layout_gravity="center"
             android:text="Salvar Item" />
 
     </LinearLayout>

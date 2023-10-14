@@ -8,7 +8,6 @@ public class Endereco {
     private String cidade;
     private String uf;
 
-
     public Endereco(int codigo, String logradouro, String numero, String bairro, String cidade, String uf) {
         this.codigo = codigo;
         this.logradouro = logradouro;
@@ -28,7 +27,6 @@ public class Endereco {
 
     public Endereco() {
     }
-
 
     public int getCodigo() {
         return codigo;
@@ -76,5 +74,20 @@ public class Endereco {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+
+    @Override
+    public String toString() {
+        return logradouro + " Nº " + numero + " - " +uf ;
+    }
+
+    public double calcularFrete() {
+        if (!this.cidade.equalsIgnoreCase("Toledo") && this.uf.equalsIgnoreCase("PR")) {
+            return 20.0;
+        } else if (!this.uf.equalsIgnoreCase("PR")) {
+            return 50.0;
+        }
+        return 0;
     }
 }

@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
-    android:orientation="vertical"
-    >
+    tools:context=".view.MainActivity">
 
-
-    <Button
-        android:id="@+id/btnTelaCadastroCliente"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cadastro de Cliente"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnTelaCadastroEndereco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar Endereço"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        <TextView
+            android:layout_marginTop="100sp"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:textSize="30sp"
+            android:text="Cadastros"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center" />
 
-    <Button
-        android:id="@+id/btnTelaCadastroItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar Item"
-        android:layout_gravity="center"
-        android:layout_below="@id/btnTelaCadastroCliente"/>
+        <Button
+            android:id="@+id/btnTelaCadastroCliente"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:text="Cadastro de Cliente"
+            android:gravity="center"
+            android:layout_gravity="center" />
 
-    <Button
-        android:id="@+id/btnTelaPedidoVenda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pedido de Venda"
-        android:layout_gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/btnTelaCadastroEndereco"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:text="Cadastrar Endereço"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
 
+        <TextView
+            android:layout_marginTop="100sp"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:textSize="30sp"
+            android:text="Venda"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center" />
 
+        <Button
+            android:id="@+id/btnTelaCadastroItem"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:layout_gravity="center"
+            android:text="Cadastrar Item" />
 
+        <Button
+            android:id="@+id/btnTelaPedidoVenda"
+            android:layout_width="300sp"
+            android:layout_height="60sp"
+            android:text="Pedido de Venda"
+            android:layout_gravity="center_horizontal" />
 
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
