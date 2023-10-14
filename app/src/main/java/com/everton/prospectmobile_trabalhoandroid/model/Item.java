@@ -4,8 +4,15 @@ public class Item {
 
     private int codigo;
     private String descricao;
-    private double valorUnit;
+    private double ValorUnitario;
     private String unidadeMedida;
+
+
+    public Item( String descricao, double valorUnitario, String unidadeMedida) {
+        this.descricao = descricao;
+        ValorUnitario = valorUnitario;
+        this.unidadeMedida = unidadeMedida;
+    }
 
     public Item() {
     }
@@ -26,12 +33,12 @@ public class Item {
         this.descricao = descricao;
     }
 
-    public double getValorUnit() {
-        return valorUnit;
+    public double getValorUnitario() {
+        return ValorUnitario;
     }
 
-    public void setValorUnit(double valorUnit) {
-        this.valorUnit = valorUnit;
+    public void setValorUnitario(double valorUnitario) {
+        this.ValorUnitario = valorUnitario;
     }
 
     public String getUnidadeMedida() {
