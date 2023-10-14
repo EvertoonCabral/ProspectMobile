@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Selecionar o cliente -->
+        <Spinner
+            android:id="@+id/spinnerClientes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selecione o cliente" />
+
+        <!-- Selecionar o item de venda -->
+        <Spinner
+            android:id="@+id/spinnerItens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selecione o item" />
+
+        <!-- Informar a quantidade -->
+        <EditText
+            android:id="@+id/etQuantidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantidade"
+            android:inputType="number" />
+
+        <!-- Exibir valor unitário e unidade de medida -->
+        <TextView
+            android:id="@+id/tvValorUnitario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valor Unitário: " />
+
+        <TextView
+            android:id="@+id/tvUnidadeMedida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unidade de Medida: " />
+
+        <!-- Botão para adicionar item ao pedido -->
+        <Button
+            android:id="@+id/btnAdicionarItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Item" />
+
+        <!-- Lista para exibir os itens adicionados ao pedido -->
+        <ListView
+            android:id="@+id/lvItensPedido"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <!-- Campo informando o valor total e total de itens adicionados -->
+        <TextView
+            android:id="@+id/tvValorTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valor Total: " />
+
+        <TextView
+            android:id="@+id/tvTotalItens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total de Itens: " />
+
+        <!-- Condição de pagamento -->
+        <RadioGroup
+            android:id="@+id/rgCondicaoPagamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbAVista"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="À vista" />
+
+            <RadioButton
+                android:id="@+id/rbAPrazo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A prazo" />
+        </RadioGroup>
+
+        <!-- Campo para informar a quantidade de parcelas -->
+        <EditText
+            android:id="@+id/etQuantidadeParcelas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantidade de Parcelas"
+            android:inputType="number" />
+
+        <!-- Lista com valor de cada parcela -->
+        <ListView
+            android:id="@+id/lvParcelas"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <!-- Selecionar o endereço de entrega -->
+        <Spinner
+            android:id="@+id/spinnerEnderecos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selecione o endereço de entrega" />
+
+        <!-- Botão para concluir o pedido -->
+        <Button
+            android:id="@+id/btnConcluirPedido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Concluir Pedido" />
+
+    </LinearLayout>
+</ScrollView>

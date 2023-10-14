@@ -11,11 +11,13 @@ public class PedidoVenda {
     private double valorTotal;
     private String condicaoPagamento;
     private int quantidadeParcelas;
+    private String data; // Adicionado campo Data
+    private double valorFrete; // Adicionado campo ValorFrete
 
-
-    public PedidoVenda(){
-
+    public PedidoVenda() {
     }
+
+    // Getters e Setters
 
     public int getCodigo() {
         return codigo;
@@ -72,4 +74,22 @@ public class PedidoVenda {
     public void setQuantidadeParcelas(int quantidadeParcelas) {
         this.quantidadeParcelas = quantidadeParcelas;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public double getValorFrete() {
+        return valorFrete;
+    }
+
+    public void setValorFrete(double valorFrete) {
+        this.valorFrete = valorFrete;
+    }
+
+    // Você pode adicionar métodos adicionais conforme necessário, por exemplo, para calcular o valor total do pedido com base nos itens, etc.
 }

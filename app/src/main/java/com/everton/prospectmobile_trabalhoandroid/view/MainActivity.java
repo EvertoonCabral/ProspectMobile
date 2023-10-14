@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import com.everton.prospectmobile_trabalhoandroid.R;
 import com.everton.prospectmobile_trabalhoandroid.controller.ClienteController;
-import com.everton.prospectmobile_trabalhoandroid.databinding.ActivityMainBinding;
+import com.everton.prospectmobile_trabalhoandroid.databinding.ActivityMainBinding; // Import do binding da sua activity
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivityMainBinding binding; // Referência para o binding
     private ClienteController clienteController;
 
     @Override
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         clienteController = new ClienteController(this);
 
+        // Usando o binding para acessar o botão e ligar à tela de cadastro de cliente
         binding.btnTelaCadastroCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Aqui você pode adicionar os outros botões e ligá-los às respectivas telas
+        // Exemplo:
         binding.btnTelaCadastroEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,5 +46,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+        binding.btnTelaPedidoVenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PedidoVendaActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+
+
+
+
+        // E assim por diante para os outros botões...
     }
 }
