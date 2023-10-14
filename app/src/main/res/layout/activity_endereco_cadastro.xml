@@ -8,12 +8,7 @@
     android:orientation="vertical"
     >
 
-    <EditText
-        android:id="@+id/edCodigoEndereco"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Código"
-        android:inputType="number" />
+
 
     <EditText
         android:id="@+id/edLogradouro"

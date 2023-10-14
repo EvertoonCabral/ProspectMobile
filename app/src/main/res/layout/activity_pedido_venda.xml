@@ -9,19 +9,35 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Selecionar o cliente -->
+        <!-- Label e Spinner para Selecionar o cliente -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cliente"
+            android:focusable="false"
+            android:clickable="false"
+            android:background="@android:color/transparent" />
+
         <Spinner
             android:id="@+id/spinnerClientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Selecione o cliente" />
+            android:layout_marginBottom="16dp" />
 
-        <!-- Selecionar o item de venda -->
+        <!-- Label e Spinner para Selecionar o item de venda -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Item"
+            android:focusable="false"
+            android:clickable="false"
+            android:background="@android:color/transparent" />
+
         <Spinner
             android:id="@+id/spinnerItens"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Selecione o item" />
+            android:layout_marginBottom="16dp" />
 
         <!-- Informar a quantidade -->
         <EditText
@@ -32,17 +48,6 @@
             android:inputType="number" />
 
         <!-- Exibir valor unitário e unidade de medida -->
-        <TextView
-            android:id="@+id/tvValorUnitario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Valor Unitário: " />
-
-        <TextView
-            android:id="@+id/tvUnidadeMedida"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Unidade de Medida: " />
 
         <!-- Botão para adicionar item ao pedido -->
         <Button

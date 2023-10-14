@@ -11,8 +11,12 @@ public class PedidoVenda {
     private double valorTotal;
     private String condicaoPagamento;
     private int quantidadeParcelas;
-    private String data; // Adicionado campo Data
-    private double valorFrete; // Adicionado campo ValorFrete
+    private String data;
+    private double valorFrete;
+
+    private List<ItemPedido> itensPedido;
+
+
 
     public PedidoVenda() {
     }

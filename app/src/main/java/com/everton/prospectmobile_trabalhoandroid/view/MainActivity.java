@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Aqui você pode adicionar os outros botões e ligá-los às respectivas telas
-        // Exemplo:
         binding.btnTelaCadastroEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,10 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        binding.btnTelaCadastroItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ItemCadastroActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
 
 
-
-
-        // E assim por diante para os outros botões...
     }
 }

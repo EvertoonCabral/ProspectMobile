@@ -15,26 +15,33 @@ public class ClienteController {
     private Context context;
 
 
-public ClienteController(Context context){
+    public ClienteController(Context context) {
 
-    this.context = context;
+        this.context = context;
 
-}
+    }
 
 
     public long salvarCliente(String nome, String cpf, String dataNasc, Endereco endereco) {
-        // Primeiro, salvamos o endereço
+
+        Cliente clienteExistente = ClienteDao.getInstancia(context).getByCPF(cpf);
+        if (clienteExistente != null) {
+            return -2; // "CPF já existe".
+        }
+
         EnderecoDao enderecoDao = EnderecoDao.getInstancia(context);
         long enderecoId = enderecoDao.insert(endereco);
 
         // Se o endereço foi salvo com sucesso, salvamos o cliente
         if (enderecoId > 0) {
-            Cliente cliente = new Cliente(0, nome, cpf, dataNasc, endereco); // 0 é um placeholder para o código do cliente, pois será gerado automaticamente pelo banco de dados.
+            Cliente cliente = new Cliente(0, nome, cpf, dataNasc, endereco);
             return ClienteDao.getInstancia(context).insert(cliente);
         } else {
-            return -1;
+            return -1; // "Erro ao salvar o endereço".
         }
     }
+
+
 
     public long atualizarCliente(String codigo, String nome, String cpf, String dataNasc, Endereco codEndereco) {
         Cliente cliente = new Cliente(Integer.parseInt(codigo), nome, cpf, dataNasc, codEndereco);

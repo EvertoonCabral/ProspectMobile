@@ -72,7 +72,6 @@ public class ClienteDao {
                 cliente.setCpf(cursor.getString(2));
                 cliente.setDataNasc(cursor.getString(3));
 
-                // Aqui, você pode buscar o endereço associado ao cliente usando o CodigoEndereco
                 int enderecoCodigo = cursor.getInt(4);
                 EnderecoDao enderecoDao = new EnderecoDao(context);
                 Endereco endereco = enderecoDao.getById(enderecoCodigo);
@@ -104,4 +103,46 @@ public class ClienteDao {
         }
         return null;
     }
+
+    public Cliente getByCPF(String cpf) {
+        Cliente cliente = null;
+        Cursor cursor = bd.query("CLIENTE", null, "CPF = ?", new String[]{cpf}, null, null, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                cliente = cursorToCliente(cursor);
+                break; // Como o CPF é único, podemos sair do loop assim que encontrarmos o cliente
+            }
+            cursor.close();
+        }
+        return cliente;
+    }
+
+    private Cliente cursorToCliente(Cursor cursor) {
+        Cliente cliente = new Cliente();
+
+        int codigoIndex = cursor.getColumnIndex("Codigo");
+        int nomeIndex = cursor.getColumnIndex("Nome");
+        int cpfIndex = cursor.getColumnIndex("CPF");
+        int dataNascIndex = cursor.getColumnIndex("DataNasc");
+
+        if (codigoIndex != -1) {
+            cliente.setCodigo(cursor.getInt(codigoIndex));
+        }
+        if (nomeIndex != -1) {
+            cliente.setNome(cursor.getString(nomeIndex));
+        }
+        if (cpfIndex != -1) {
+            cliente.setCpf(cursor.getString(cpfIndex));
+        }
+        if (dataNascIndex != -1) {
+            cliente.setDataNasc(cursor.getString(dataNascIndex));
+        }
+        return cliente;
+    }
+
+
+
 }
+

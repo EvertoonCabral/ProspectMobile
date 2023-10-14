@@ -58,4 +58,10 @@ public class Cliente {
     public void setEndereco(Endereco endereco) { // Método set ajustado
         this.endereco = endereco;
     }
+
+    @Override
+    public String toString() {
+        return  "Codigo: " + codigo + " " +
+                "Nome: " + nome + " "  ;
+    }
 }

@@ -48,4 +48,13 @@ public class Item {
     public void setUnidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
     }
+
+    @Override
+    public String toString() {
+        return
+                "Codigo: " + codigo + " " +
+                "Nome: " + descricao  + " " +
+                "Valor: " + ValorUnitario ;
+
+    }
 }
