@@ -23,7 +23,7 @@
             android:layout_width="300sp"
             android:layout_height="60sp"
             android:layout_gravity="center"
-            android:layout_margin="20dp" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:layout_width="300sp"
@@ -33,7 +33,7 @@
             android:focusable="false"
             android:clickable="false"
             android:background="@android:color/transparent"
-            android:layout_margin="20dp" />
+            android:layout_margin="10dp" />
 
 
         <Spinner
@@ -41,9 +41,8 @@
             android:layout_width="300sp"
             android:layout_height="60sp"
             android:layout_gravity="center"
-            android:layout_margin="20dp" />
+            android:layout_margin="10dp" />
 
-        <!-- Informar a quantidade -->
         <EditText
             android:id="@+id/etQuantidade"
             android:layout_width="300sp"
@@ -60,7 +59,10 @@
             android:layout_height="60sp"
             android:layout_gravity="center"
             android:text="Adicionar Item"
-            android:layout_margin="20dp" />
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/cor2"
+
+            />
 
 
         <ListView
@@ -138,7 +140,10 @@
             android:layout_height="60sp"
             android:layout_gravity="center"
             android:text="Concluir Pedido"
-            android:layout_margin="20dp" />
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/cor2"
+
+            />
 
 
     </LinearLayout>

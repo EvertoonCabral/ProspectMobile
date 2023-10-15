@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +19,8 @@
             android:layout_height="60sp"
             android:textSize="30sp"
             android:text="Cadastros"
+            android:textColor="@color/black"
+
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textAlignment="center" />
@@ -27,7 +31,10 @@
             android:layout_height="60sp"
             android:text="Cadastro de Cliente"
             android:gravity="center"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/cor2"
+
+            />
 
         <Button
             android:id="@+id/btnTelaCadastroEndereco"
@@ -35,7 +42,10 @@
             android:layout_height="60sp"
             android:text="Cadastrar Endereço"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/cor2"
+
+            />
 
         <TextView
             android:layout_marginTop="100sp"
@@ -43,6 +53,7 @@
             android:layout_height="60sp"
             android:textSize="30sp"
             android:text="Venda"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textAlignment="center" />
@@ -52,14 +63,20 @@
             android:layout_width="300sp"
             android:layout_height="60sp"
             android:layout_gravity="center"
-            android:text="Cadastrar Item" />
+            android:text="Cadastrar Item"
+            android:backgroundTint="@color/cor2"
+
+            />
 
         <Button
             android:id="@+id/btnTelaPedidoVenda"
             android:layout_width="300sp"
             android:layout_height="60sp"
             android:text="Pedido de Venda"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/cor2"
+
+            />
 
     </LinearLayout>
 </ScrollView>

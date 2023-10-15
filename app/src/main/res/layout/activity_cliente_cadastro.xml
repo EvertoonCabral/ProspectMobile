@@ -61,6 +61,7 @@
         android:textSize="18sp"
         android:layout_gravity="center"
         android:layout_marginTop="50sp"
+        android:backgroundTint="@color/cor2"
         />
 
 </LinearLayout>

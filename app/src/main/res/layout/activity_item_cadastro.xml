@@ -43,7 +43,10 @@
             android:layout_width="300sp"
             android:layout_height="60sp"
             android:layout_gravity="center"
-            android:text="Salvar Item" />
+            android:text="Salvar Item"
+            android:backgroundTint="@color/cor2"
+
+            />
 
     </LinearLayout>
 

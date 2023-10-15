@@ -39,12 +39,17 @@ public class PedidoVendaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Tela de Venda");
 
         binding = ActivityPedidoVendaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         clienteController = new ClienteController(this);
         listaClientes = clienteController.retornarTodosClientes();
+
+        if (!listaClientes.isEmpty()) {
+            clienteSelecionado = listaClientes.get(0);
+        }
 
         ArrayAdapter<Cliente> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listaClientes);
         binding.spinnerClientes.setAdapter(adapter);
@@ -132,7 +137,14 @@ public class PedidoVendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PedidoVenda pedido = new PedidoVenda();
-                pedido.setCodigo(clienteSelecionado.getCodigo());
+
+                if (clienteSelecionado == null) {
+                    Toast.makeText(PedidoVendaActivity.this, "Selecione um cliente.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                pedido.setCliente(clienteSelecionado);
+
                 pedido.setValorTotal(valorTotal + calcularFrete((Endereco) binding.spinnerEnderecos.getSelectedItem()));
                 pedido.setCondicaoPagamento(binding.rbAVista.isChecked() ? "À vista" : "A prazo");
                 pedido.setEnderecoEntrega((Endereco) binding.spinnerEnderecos.getSelectedItem());
@@ -142,13 +154,13 @@ public class PedidoVendaActivity extends AppCompatActivity {
 
                 if (result != -1) {
                     Toast.makeText(PedidoVendaActivity.this, "Pedido cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                    // Limpar campos
                     binding.etQuantidade.setText("");
                 } else {
                     Toast.makeText(PedidoVendaActivity.this, "Erro ao salvar o pedido.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
 
         EnderecoController enderecoController = new EnderecoController(this);
